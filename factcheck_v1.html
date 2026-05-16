@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fact-Check Report — Bus Driver Violence Statutes TSV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8f7f4;
+      --surface: #ffffff;
+      --border: #e0ddd8;
+      --text: #1a1a1a;
+      --muted: #6b6560;
+      --red: #c0392b;
+      --red-bg: #fdf0ee;
+      --red-border: #e8b4af;
+      --orange: #d35400;
+      --orange-bg: #fdf4ec;
+      --orange-border: #f0c99a;
+      --yellow: #b7770d;
+      --yellow-bg: #fffbf0;
+      --yellow-border: #f0dfa0;
+      --green: #1a7a3e;
+      --green-bg: #eef8f2;
+      --green-border: #9edaba;
+      --blue: #1a4a7a;
+      --blue-bg: #eef3fc;
+      --blue-border: #9ab8e4;
+      --gray-bg: #f2f0ec;
+      --gray-border: #ccc8c2;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    a { color: var(--blue); }
+
+    /* ---- HEADER ---- */
+    .page-header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 2rem 2rem 1.5rem;
+    }
+    .page-header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: .3rem; }
+    .page-header .meta { font-size: .85rem; color: #aaa8c0; }
+    .page-header .meta strong { color: #fff; }
+
+    /* ---- LAYOUT ---- */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---- SUMMARY CARDS ---- */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .summary-card .num { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+    .summary-card .label { font-size: .78rem; color: var(--muted); margin-top: .3rem; text-transform: uppercase; letter-spacing: .05em; }
+    .summary-card.crit .num { color: var(--red); }
+    .summary-card.mod .num { color: var(--orange); }
+    .summary-card.min .num { color: var(--yellow); }
+    .summary-card.ok .num { color: var(--green); }
+    .summary-card.info .num { color: var(--blue); }
+
+    /* ---- SECTION HEADING ---- */
+    h2.section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: .5rem;
+      margin: 2rem 0 1rem;
+    }
+    h2.section-title .count {
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: .5rem;
+    }
+
+    /* ---- STATE CARDS ---- */
+    .state-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .state-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      padding: .85rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--gray-bg);
+    }
+    .state-name { font-weight: 700; font-size: 1rem; }
+    .accuracy-badge {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .15rem .55rem;
+      border-radius: 999px;
+    }
+    .badge-inaccurate    { background: var(--red-bg);    color: var(--red);    border: 1px solid var(--red-border); }
+    .badge-needs-nuance  { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+    .badge-mostly-accurate{ background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+    .badge-accurate      { background: var(--green-bg);  color: var(--green);  border: 1px solid var(--green-border); }
+
+    .state-card-body { padding: 1rem 1.25rem; }
+
+    /* ---- ISSUES ---- */
+    .issue-list { list-style: none; }
+    .issue-list li {
+      border-left: 4px solid var(--border);
+      padding: .6rem .9rem;
+      margin-bottom: .6rem;
+      border-radius: 0 6px 6px 0;
+    }
+    .issue-list li.crit    { border-color: var(--red);    background: var(--red-bg); }
+    .issue-list li.moderate{ border-color: var(--orange);  background: var(--orange-bg); }
+    .issue-list li.minor   { border-color: var(--yellow);  background: var(--yellow-bg); }
+
+    .issue-field {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: .2rem;
+    }
+    .issue-severity {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: .1rem .4rem;
+      border-radius: 4px;
+      margin-right: .4rem;
+    }
+    .sev-critical { background: var(--red); color: #fff; }
+    .sev-moderate { background: var(--orange); color: #fff; }
+    .sev-minor    { background: var(--yellow); color: #fff; }
+
+    .issue-claimed, .issue-actual {
+      font-size: .88rem;
+      margin-top: .3rem;
+    }
+    .issue-claimed em { color: var(--muted); }
+    .issue-actual strong { color: var(--text); }
+
+    .note-box {
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+      border-radius: 6px;
+      padding: .6rem .9rem;
+      font-size: .88rem;
+      margin-top: .7rem;
+    }
+
+    .missing-box {
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-border);
+      border-radius: 6px;
+      padding: .6rem .9rem;
+      font-size: .88rem;
+      margin-top: .7rem;
+    }
+    .missing-box strong { display: block; margin-bottom: .3rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+    .missing-box ul { padding-left: 1.2rem; }
+    .missing-box li { margin-bottom: .2rem; }
+
+    /* ---- DATA INTEGRITY BOX ---- */
+    .integrity-box {
+      background: var(--red-bg);
+      border: 1px solid var(--red-border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .integrity-box h3 { font-size: .9rem; font-weight: 700; color: var(--red); margin-bottom: .5rem; }
+    .integrity-box ul { padding-left: 1.2rem; font-size: .88rem; }
+    .integrity-box li { margin-bottom: .4rem; }
+
+    /* ---- METHODOLOGY NOTE ---- */
+    .method-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .method-box strong { color: var(--text); }
+
+    /* ---- TOC STRIP ---- */
+    .toc-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin: 1rem 0;
+    }
+    .toc-strip a {
+      font-size: .78rem;
+      padding: .2rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .toc-strip a:hover { background: var(--blue-bg); color: var(--blue); }
+    .toc-strip a.flag-inaccurate { border-color: var(--red-border); color: var(--red); background: var(--red-bg); }
+    .toc-strip a.flag-nuance     { border-color: var(--orange-border); color: var(--orange); background: var(--orange-bg); }
+    .toc-strip a.flag-mostly     { border-color: var(--yellow-border); color: var(--yellow); background: var(--yellow-bg); }
+
+    footer { margin: 3rem 0 2rem; text-align: center; font-size: .82rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container">
+    <h1>Fact-Check Report — Bus Driver / Transit Worker Violence Statutes TSV</h1>
+    <p class="meta">
+      <strong>Reviewed:</strong> May 16, 2026 &nbsp;&bull;&nbsp;
+      <strong>Source:</strong> bus_driver_violence_statutes.tsv &nbsp;&bull;&nbsp;
+      <strong>Method:</strong> Cached source files + web search verification, state by state
+    </p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+    <div class="summary-card crit">
+      <div class="num">1</div>
+      <div class="label">Critical / Flat-Out Wrong</div>
+    </div>
+    <div class="summary-card mod">
+      <div class="num">5</div>
+      <div class="label">Needs Significant Nuance</div>
+    </div>
+    <div class="summary-card min">
+      <div class="num">8</div>
+      <div class="label">Minor Issues / Omissions</div>
+    </div>
+    <div class="summary-card ok">
+      <div class="num">37</div>
+      <div class="label">Verified Accurate</div>
+    </div>
+    <div class="summary-card info">
+      <div class="num">3</div>
+      <div class="label">Cache Integrity Problems</div>
+    </div>
+  </div>
+
+  <!-- METHOD -->
+  <div class="method-box">
+    <strong>Method:</strong> All available cached source files in <code>source_cache/</code> were read in full. Web searches were conducted for all states lacking cached files, and for additional verification of ambiguous claims. Severity ratings: <strong>Critical</strong> = the TSV is factually wrong and would mislead a reader; <strong>Moderate</strong> = the TSV is incomplete or imprecise in a material way; <strong>Minor</strong> = a small omission or nuance that does not change the overall characterization.
+  </div>
+
+  <!-- DATA INTEGRITY -->
+  <div class="integrity-box">
+    <h3>Source Cache Integrity Issues (3 states)</h3>
+    <ul>
+      <li><strong>Louisiana:</strong> <code>la_14_34_5_1.html</code> captured RS&nbsp;14:224 (a water-transport prohibition statute) instead of the intended RS&nbsp;14:34.5.1 (battery of a bus operator). The wrong statute was cached, so the Louisiana entry cannot be verified from the cached file.</li>
+      <li><strong>Tennessee:</strong> Both <code>tn_39_13_102.html</code> and <code>tn_39_13_102_2024.html</code> are Cloudflare JavaScript challenge pages — no statute text was successfully cached. This likely contributed to the TSV's incorrect conclusion that the transit-employee provision was removed.</li>
+      <li><strong>Michigan:</strong> <code>mi_750_81f.html</code> and <code>mi_750_81g.html</code> returned HTTP 400 Error pages from the Michigan Legislature website. However, <code>mi_750_81e.html</code> (which loaded correctly) confirms the "public utility" definition in MCL&nbsp;750.81e excludes transit operators, so the TSV's conclusion for Michigan is still correct despite the errors.</li>
+    </ul>
+  </div>
+
+  <!-- QUICK NAV -->
+  <h2 class="section-title">Quick Navigation — States With Issues</h2>
+  <div class="toc-strip">
+    <a href="#tn" class="flag-inaccurate">Tennessee &#x26A0;</a>
+    <a href="#la" class="flag-nuance">Louisiana</a>
+    <a href="#az" class="flag-nuance">Arizona</a>
+    <a href="#il" class="flag-nuance">Illinois</a>
+    <a href="#co" class="flag-nuance">Colorado</a>
+    <a href="#wv" class="flag-mostly">West Virginia</a>
+    <a href="#wa" class="flag-mostly">Washington</a>
+    <a href="#md" class="flag-mostly">Maryland</a>
+    <a href="#mn" class="flag-mostly">Minnesota</a>
+    <a href="#va" class="flag-mostly">Virginia</a>
+    <a href="#wi" class="flag-mostly">Wisconsin</a>
+    <a href="#mi" class="flag-mostly">Michigan</a>
+  </div>
+
+  <!-- ==============================
+       CRITICAL ERRORS
+       ============================== -->
+  <h2 class="section-title">Critical Errors — TSV Is Flat-Out Wrong <span class="count">(1 state)</span></h2>
+
+  <div class="state-card" id="tn">
+    <div class="state-card-header">
+      <span class="state-name">Tennessee</span>
+      <span class="accuracy-badge badge-inaccurate">Inaccurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="crit">
+          <div class="issue-field">
+            <span class="issue-severity sev-critical">Critical</span>
+            Transit/bus-driver-specific treatment &amp; "Distinct from violence in general?"
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "No current public-transit-driver-specific assault enhancement located; historical transit-employee aggravated-assault language appears to have been deleted." Distinct column: "No current distinct transit category located."
+          </div>
+          <div class="issue-actual">
+            <strong>What the law actually says:</strong> Tennessee Code Annotated &sect;&nbsp;39-13-102(d) <em>still exists</em> and explicitly covers transit employees. It provides: "A person commits aggravated assault who, with intent to cause physical injury to any public employee or an employee of a transportation system, public or private, whose operation is authorized by title&nbsp;7, chapter&nbsp;56, causes physical injury to the employee while the public employee is performing a duty within the scope of the public employee's employment or while the transportation system employee is performing an assigned duty on, or directly related to, the operation of a transit vehicle." This is a <strong>Class A misdemeanor</strong> (up to 11 months 29 days in jail and/or fine up to $2,500). The TSV's claim that this language was deleted is incorrect. The cached files for Tennessee were Cloudflare-blocked, which likely led to this error.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box">
+        <strong>Recommended correction:</strong> Tennessee should be changed from "No" to "Yes" in the transit-specific treatment and "Distinct from violence in general?" columns. The statute number should add TCA &sect;&nbsp;39-13-102(d). The covered worker/setting should note "employee of a transportation system, public or private, whose operation is authorized by TCA title&nbsp;7, ch.&nbsp;56." The felony/misdemeanor column should note Class A misdemeanor. The punishment column should note up to 11 months 29 days and/or up to $2,500 fine.
+      </div>
+      <div class="note-box" style="margin-top:.5rem; background: var(--red-bg); border-color: var(--red-border);">
+        <strong>Cache integrity issue:</strong> Both Tennessee source files were Cloudflare-blocked with no usable text, preventing verification during original research. The transit-employee provision was confirmed by independent web search against Justia, FindLaw, and TNDocket sources.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       NEEDS SIGNIFICANT NUANCE
+       ============================== -->
+  <h2 class="section-title">Needs Significant Nuance — Material Omissions or Imprecision <span class="count">(5 states)</span></h2>
+
+  <!-- LOUISIANA -->
+  <div class="state-card" id="la">
+    <div class="state-card-header">
+      <span class="state-name">Louisiana</span>
+      <span class="accuracy-badge badge-needs-nuance">Needs Nuance</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            Covered worker/setting — "train operator" claim unsupported
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "Bus operator or train operator while operating a bus/train" and "Statute covers battery committed without consent when the offender has reasonable grounds to believe the victim is a bus operator or train operator operating a bus or train."
+          </div>
+          <div class="issue-actual">
+            <strong>What the law actually says:</strong> La. R.S. 14:34.5.1 is titled <em>Battery of a bus operator</em>. The definition of "bus operator" covers persons employed by a public transit system who operate a bus, or who operate an electronically operated cable car. The statute does <em>not</em> mention "train operator" in its title or definition. The title of this statute has been consistently "Battery of a bus operator" across 2011, 2015, and 2018 editions. The most recent amendment (Acts 2024, No. 367, §1) does not appear to have added train operators based on available sources. The TSV's "bus operator or train operator" framing overstates coverage.
+          </div>
+        </li>
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            Cache integrity — wrong statute cached
+          </div>
+          <div class="issue-claimed">
+            <em>TSV source file:</em> la_14_34_5_1.html
+          </div>
+          <div class="issue-actual">
+            <strong>What was actually cached:</strong> The file <code>la_14_34_5_1.html</code> captured RS&nbsp;14:224 (Transportation of water from St. Tammany Parish prohibited) — a completely unrelated statute. No verification of RS&nbsp;14:34.5.1 is possible from the cached file.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box">
+        <strong>Recommended correction:</strong> Change "bus operator or train operator" to "bus operator (or electronically operated cable car operator)." Verify whether the 2024 amendment added any additional covered workers. Re-cache the correct statute page at legis.la.gov/Legis/Law.aspx?d=206144.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARIZONA -->
+  <div class="state-card" id="az">
+    <div class="state-card-header">
+      <span class="state-name">Arizona</span>
+      <span class="accuracy-badge badge-needs-nuance">Needs Nuance</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            Missing protections — same 2025 bill added airport employees and railway workers
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> Only transit employees in buses/vans/shuttles mentioned. Statute listed as only A.R.S. &sect;&nbsp;13-1204(A)(8)(k).
+          </div>
+          <div class="issue-actual">
+            <strong>What the law actually says:</strong> 2025 Ariz. Sess. Laws ch. 172 added <em>three</em> new protected categories in the same bill under A.R.S. &sect;&nbsp;13-1204(A)(8): (k) public transit employees performing duties on/off a bus, van, or shuttle; <em>and also</em> (l) airport employees, and (m) railway workers (in the pre-2033 version). The TSV mentions only the transit employee provision and omits the airport and railway additions from the same bill.
+          </div>
+        </li>
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            Dual-version structure not noted — subsection letters change after 2032
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "A.R.S. section 13-1204(A)(8)(k), as amended by 2025 Ariz. Sess. Laws ch. 172" (single citation)
+          </div>
+          <div class="issue-actual">
+            <strong>What the law actually says:</strong> Ch. 172 creates two parallel versions of A.R.S. &sect;&nbsp;13-1204 because of a Proposition 311 sunset provision. Section 1 (operative until January 1, 2033) places transit employees at (A)(8)(k). Section 2 (operative after December 31, 2032) places them at (A)(8)(l) — one letter later — because of differing numbering in the post-sunset version. A citation to only "(A)(8)(k)" is incomplete.
+          </div>
+        </li>
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Paraphrase of covered worker scope slightly altered
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "performing duties on or off a bus, van, or shuttle"
+          </div>
+          <div class="issue-actual">
+            <strong>What the statute says:</strong> "performs duties on and off a vehicle while engaged in transferring members of the community to and from destinations in a bus, van or shuttle." The coverage is for duties on and off the <em>vehicle</em> (not "on or off a bus"), while the employee is engaged in transit work. The paraphrase inverts the qualifying phrase.
+          </div>
+        </li>
+      </ul>
+      <div class="missing-box">
+        <strong>Missing from TSV</strong>
+        <ul>
+          <li>Airport employees: A.R.S. &sect;&nbsp;13-1204(A)(8)(l) [pre-2033] / (m) [post-2032] — added by same ch. 172</li>
+          <li>Railway workers: A.R.S. &sect;&nbsp;13-1204(A)(8)(m) [pre-2033] / (n) [post-2032] — added by same ch. 172</li>
+          <li>New paragraph 12: aided by two or more accomplices causing physical injury = Class 4 felony (also added by ch. 172)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ILLINOIS -->
+  <div class="state-card" id="il">
+    <div class="state-card-header">
+      <span class="state-name">Illinois</span>
+      <span class="accuracy-badge badge-needs-nuance">Needs Nuance</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            625 ILCS 50/1 citation — notice/posting act, not a criminal penalty provision
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> Statute numbers include "625 ILCS 50/1" in the same list as 720 ILCS 5/12-2 and 5/12-3.05. The description says "Posting law states assault against a transit employee is Class A misdemeanor and physical harm is Class 3 felony."
+          </div>
+          <div class="issue-actual">
+            <strong>What the law actually says:</strong> 625 ILCS 50 is the <em>Public Conveyance Notice Act</em> — a law that requires transit agencies to post notices about the penalties for assaulting transit employees. It is a signage/administrative requirement, not a criminal statute itself. The criminal penalties (Class A misdemeanor for aggravated assault, Class 3 felony for aggravated battery against transportation personnel) come from 720 ILCS 5/12-2 and 720 ILCS 5/12-3.05 respectively. Listing 625 ILCS 50/1 under "Statute number(s)" in a criminal-law table is misleading. The TSV note does acknowledge it is a "notice/signage requirement," which mitigates but doesn't fully resolve the confusion from listing it alongside criminal statutes.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box">
+        <strong>Recommended correction:</strong> Move 625 ILCS 50/1 to the Notes column only. The "Statute number(s)" column should list only the criminal provisions: 720 ILCS 5/12-2 and 5/12-3.05.
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORADO -->
+  <div class="state-card" id="co">
+    <div class="state-card-header">
+      <span class="state-name">Colorado</span>
+      <span class="accuracy-badge badge-needs-nuance">Needs Nuance</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="moderate">
+          <div class="issue-field">
+            <span class="issue-severity sev-moderate">Moderate</span>
+            Penalty grades unverified from enrolled text
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "Class 1 misdemeanor for transit-worker harassment; Class 2 misdemeanor for RTD interference"
+          </div>
+          <div class="issue-actual">
+            <strong>What we can verify:</strong> The cached file <code>co_hb25_1290_page.html</code> is only the bill-tracking/status page, not the enrolled statutory text. The signed PDF (<code>co_hb25_1290_signed.pdf</code>) is in source_cache but was not read as text. The specific Class 1 / Class 2 misdemeanor penalty breakdown <em>cannot be confirmed from the cached material</em>. The 2025 law is real (HB25-1290, "Transit Worker Assault &amp; Funding for Training"), but the exact penalty grades require verification against the enrolled text or the C.R.S. sections as amended.
+          </div>
+        </li>
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Framing as "harassment/interference" — verify exact statutory label
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "framed as harassment/interference with a transit worker, not a general assault enhancement"
+          </div>
+          <div class="issue-actual">
+            <strong>Status:</strong> The TSV correctly notes this is not an assault reclassification. The bill title ("Assault &amp; Funding for Training") suggests the bill covers both the assault/harassment aspect and transit safety funding. The exact operative language needs verification from the enrolled text.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box">
+        <strong>Recommended action:</strong> Read the signed PDF <code>source_cache/co_hb25_1290_signed.pdf</code> or fetch the enrolled C.R.S. text to verify the Class 1 / Class 2 misdemeanor grades and the exact statutory language added to sections 18-9-101, 18-9-111, and 32-9-160.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       MOSTLY ACCURATE — MINOR ISSUES
+       ============================== -->
+  <h2 class="section-title">Minor Issues / Notable Omissions <span class="count">(8 states)</span></h2>
+
+  <!-- WEST VIRGINIA -->
+  <div class="state-card" id="wv">
+    <div class="state-card-header">
+      <span class="state-name">West Virginia</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Aircraft omitted from scope description (confirmed by cached file)
+          </div>
+          <div class="issue-claimed">
+            <em>TSV covers:</em> "vehicle/boat used for public conveyance" — does not mention aircraft.
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached statute shows:</strong> W. Va. Code &sect;&nbsp;61-2-16a(b) (unlawful assault subsection) explicitly covers "vehicle, aircraft or boat." Aircraft are included in the unlawful-assault tier of the statute. The TSV's scope description is correct for the malicious assault tier but incomplete overall.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Source confirmed from:</strong> source_cache/wv_61_2_16a.html — all four subsections (malicious assault, unlawful assault, battery, assault) verified accurate including penalty ranges.</div>
+    </div>
+  </div>
+
+  <!-- WASHINGTON -->
+  <div class="state-card" id="wa">
+    <div class="state-card-header">
+      <span class="state-name">Washington</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            2025 amendment to RCW 9.91.025 not noted
+          </div>
+          <div class="issue-claimed">
+            <em>TSV does not note any 2025 amendment.</em>
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file shows:</strong> RCW 9.91.025 (unlawful transit conduct) was amended in 2025 (2025 c 234 s 1) per the citation history in wa_9_91_025.html. The amendment does not appear to change the misdemeanor characterization, but the currency note should be updated.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Both core statutes confirmed from cached files:</strong> RCW 9A.36.031(1)(b) (transit operator assault = Class C felony) fully verified from wa_9a_36_031.html. RCW 9.91.025 (unlawful transit conduct = misdemeanor) verified from wa_9_91_025.html. The 2024 amendment to 9A.36.031 (2024 c 220 s 1) is the most recent for the felony provision.</div>
+    </div>
+  </div>
+
+  <!-- MARYLAND -->
+  <div class="state-card" id="md">
+    <div class="state-card-header">
+      <span class="state-name">Maryland</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Section 7-705(e) lower fine tier not mentioned
+          </div>
+          <div class="issue-claimed">
+            <em>TSV only describes:</em> Section 7-705(f) interference penalty (fine up to $1,000, imprisonment up to 1 year).
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file shows:</strong> Section 7-705(e) provides a <em>separate</em>, lower penalty for general transit-rule violations (fine not more than $500) distinct from the obstruct/hinder/interfere paragraph in (f) which carries the higher $1,000/1-year penalty. This distinction matters for practitioners.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Both Maryland statutes confirmed accurate from cached files:</strong> 7-705(f) interference penalty ($1,000 / 1 year) verified; 7-705.1 transit-ban process (administrative, not criminal) verified. The TSV's characterization that 7-705.1 is not a criminal enhancement is confirmed correct.</div>
+    </div>
+  </div>
+
+  <!-- MINNESOTA -->
+  <div class="state-card" id="mn">
+    <div class="state-card-header">
+      <span class="state-name">Minnesota</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Section 609.855 subd. 5 — shooting at transit vehicles not mentioned
+          </div>
+          <div class="issue-claimed">
+            <em>TSV covers:</em> Section 609.855 interference with transit operator (up to 3 years/$5,000 for force-based interference; up to 90 days/$1,000 otherwise).
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file also shows:</strong> Minn. Stat. &sect;&nbsp;609.855 subd. 5 separately covers shooting at a transit vehicle — up to 3 years/$6,000 if unoccupied; up to 5 years/$10,000 if occupied. This is an additional protection not noted in the TSV.
+          </div>
+        </li>
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            2024 revisor instruction to section 609.2231 subd. 11 not noted
+          </div>
+          <div class="issue-claimed">
+            <em>TSV does not note any 2024 change.</em>
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file shows:</strong> The transit operator assault provision in &sect;&nbsp;609.2231 subd. 11 received a revisor's instruction in 2024 (2024 c 104 art 2 s 15) that may have updated cross-references or numbering. The substance of the protection (gross misdemeanor) is unchanged.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Core provisions confirmed from cached files:</strong> Section 609.2231 subd. 11 (transit operator assault/bodily fluid offense — gross misdemeanor) and 609.855 subd. 2 (interference) both verified. Minnesota's transit coverage is correctly described as strong.</div>
+    </div>
+  </div>
+
+  <!-- VIRGINIA -->
+  <div class="state-card" id="va">
+    <div class="state-card-header">
+      <span class="state-name">Virginia</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            2025 amendment not noted (transit provision unchanged)
+          </div>
+          <div class="issue-claimed">
+            <em>TSV does not note any 2025 amendment.</em>
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file shows:</strong> Va. Code &sect;&nbsp;18.2-57 was amended in 2025 (2025 c. 361). The transit operator protection in subsection (F) was <em>not changed</em> by this amendment, but for currency the note should reference the 2025 act as the most recent version.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Fully verified from cached file (va_18_2_57.html):</strong> Subsection (F) covers "an operator of a vehicle operated by a public transportation service as defined in &sect;&nbsp;18.2-160.2 who is engaged in the performance of his duties." Class 1 misdemeanor (up to 12 months/$2,500) with mandatory minimum 6-month transit-use ban — all confirmed accurate.</div>
+    </div>
+  </div>
+
+  <!-- WISCONSIN -->
+  <div class="state-card" id="wi">
+    <div class="state-card-header">
+      <span class="state-name">Wisconsin</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Old section 940.20 citation — should no longer be used
+          </div>
+          <div class="issue-claimed">
+            <em>TSV notes:</em> "older sources may cite section 940.20."
+          </div>
+          <div class="issue-actual">
+            <strong>What the cached file confirms:</strong> 2025 Wisconsin Act 24 comprehensively reorganized Wisconsin's battery statutes. The transit-vehicle operator protection is now <em>exclusively</em> in &sect;&nbsp;940.62(1)(e). Section 940.20 should not be cited for this provision. The TSV's caution about 940.20 is useful but could be stated more definitively.
+          </div>
+        </li>
+      </ul>
+      <div class="note-box"><strong>Fully verified from cached file (wi_940_62.html):</strong> 940.62(1)(e) covers operators, drivers, or passengers of public transit vehicles (Class I felony — up to 3.5 years/$10,000). Three-part coverage (while on vehicle, after being forced off, while prevented from accessing) confirmed. 940.51(19) "public transit vehicle" definition confirmed. 2025 Act 24 confirmed as the source.</div>
+    </div>
+  </div>
+
+  <!-- MICHIGAN -->
+  <div class="state-card" id="mi">
+    <div class="state-card-header">
+      <span class="state-name">Michigan</span>
+      <span class="accuracy-badge badge-mostly-accurate">Mostly Accurate</span>
+    </div>
+    <div class="state-card-body">
+      <ul class="issue-list">
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            750.81f and 750.81g cached files returned 400 errors — cannot confirm those sections
+          </div>
+          <div class="issue-claimed">
+            <em>TSV claims:</em> "Public-utility-worker assault statutes sections 750.81e-750.81g do not cover transit operators."
+          </div>
+          <div class="issue-actual">
+            <strong>What we can and cannot verify:</strong> <code>mi_750_81f.html</code> and <code>mi_750_81g.html</code> both returned HTTP 400 Error pages. However, <code>mi_750_81e.html</code> loaded correctly and confirms the "public utility" definition covers "steam, gas, heat, electricity, water, cable television, telecommunications services, or pipeline services" — explicitly excluding transit. Since 750.81f and 750.81g build on that same definition, the TSV's conclusion is likely correct. However, those sections were not directly verified.
+          </div>
+        </li>
+        <li class="minor">
+          <div class="issue-field">
+            <span class="issue-severity sev-minor">Minor</span>
+            Pending legislation not noted
+          </div>
+          <div class="issue-claimed">
+            <em>TSV notes:</em> "Recent transit-worker assault bills existed, but no enacted current MCL transit-operator provision was located."
+          </div>
+          <div class="issue-actual">
+            <strong>Additional context:</strong> Michigan HB 4017 (2023 session) and similar bills to create transit worker assault enhancements were proposed but not enacted. For a complete picture, the notes column could name the specific bills that failed, to help readers understand the legislative history.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==============================
+       VERIFIED ACCURATE STATES
+       ============================== -->
+  <h2 class="section-title">Verified Accurate — No Issues Found <span class="count">(37 jurisdictions)</span></h2>
+  <p style="color:var(--muted); font-size:.9rem; margin-bottom:1rem;">
+    The following jurisdictions were verified against cached source files and/or web searches. No material inaccuracies were found.
+  </p>
+
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap:.6rem; margin-bottom:1.5rem;">
+    <!-- verified states -->
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Alabama</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Alaska</strong><br><span style="color:var(--muted); font-size:.78rem;">Anchorage local example accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Arkansas</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>California</strong><br><span style="color:var(--muted); font-size:.78rem;">241.3, 243.3, 245.2 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Connecticut</strong><br><span style="color:var(--muted); font-size:.78rem;">53a-167c, 53a-167e — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Delaware</strong><br><span style="color:var(--muted); font-size:.78rem;">612(a)(3), 613(a)(5) — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Dist. of Columbia</strong><br><span style="color:var(--muted); font-size:.78rem;">22-3751.01 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Florida</strong><br><span style="color:var(--muted); font-size:.78rem;">784.07 reclassification — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Georgia</strong><br><span style="color:var(--muted); font-size:.78rem;">Transit-setting enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Hawaii</strong><br><span style="color:var(--muted); font-size:.78rem;">HRS 711-1112 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Idaho</strong><br><span style="color:var(--muted); font-size:.78rem;">School bus only — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Indiana</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Iowa</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Kansas</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Kentucky</strong><br><span style="color:var(--muted); font-size:.78rem;">School bus only — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Maine</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Massachusetts</strong><br><span style="color:var(--muted); font-size:.78rem;">2025 ch. 79 / 265 s.13D — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Mississippi</strong><br><span style="color:var(--muted); font-size:.78rem;">School bus only — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Missouri</strong><br><span style="color:var(--muted); font-size:.78rem;">Special victim + bus hijacking — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Montana</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Nebraska</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Nevada</strong><br><span style="color:var(--muted); font-size:.78rem;">NRS 200.471, 200.481 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>New Hampshire</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>New Jersey</strong><br><span style="color:var(--muted); font-size:.78rem;">2C:12-1(b)(5)(h) — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>New Mexico</strong><br><span style="color:var(--muted); font-size:.78rem;">Bus hijacking 30-7-12 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>New York</strong><br><span style="color:var(--muted); font-size:.78rem;">PL 120.05(11) — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>North Carolina</strong><br><span style="color:var(--muted); font-size:.78rem;">14-33(c)(7) — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>North Dakota</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Ohio</strong><br><span style="color:var(--muted); font-size:.78rem;">School bus only — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Oklahoma</strong><br><span style="color:var(--muted); font-size:.78rem;">Bus hijacking 1901-1904 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Oregon</strong><br><span style="color:var(--muted); font-size:.78rem;">ORS 163.165 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Pennsylvania</strong><br><span style="color:var(--muted); font-size:.78rem;">18 Pa.C.S. 2702 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Rhode Island</strong><br><span style="color:var(--muted); font-size:.78rem;">11-5-5 (RIPTA) — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>South Carolina</strong><br><span style="color:var(--muted); font-size:.78rem;">58-23-1830 interference — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>South Dakota</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Texas</strong><br><span style="color:var(--muted); font-size:.78rem;">Public servant limitation — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Utah</strong><br><span style="color:var(--muted); font-size:.78rem;">Bus hijacking 76-9-1502/1503 — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Vermont</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+    <div style="background:var(--green-bg); border:1px solid var(--green-border); border-radius:6px; padding:.5rem .9rem; font-size:.88rem;">
+      <strong>Wyoming</strong><br><span style="color:var(--muted); font-size:.78rem;">No transit enhancement — accurate</span>
+    </div>
+  </div>
+
+  <!-- ==============================
+       PRIORITY CORRECTIONS SUMMARY
+       ============================== -->
+  <h2 class="section-title">Priority Action List</h2>
+  <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1.5rem;">
+    <ol style="padding-left:1.4rem; line-height:2;">
+      <li>
+        <strong>Tennessee (Critical):</strong> Change to "Yes" for transit-specific treatment. Add TCA &sect;&nbsp;39-13-102(d). Note: Class A misdemeanor; up to 11 months 29 days/$2,500; covers employees of transportation systems authorized by title 7, ch. 56.
+      </li>
+      <li>
+        <strong>Louisiana (Moderate):</strong> Remove "or train operator" from covered worker description. La. R.S. 14:34.5.1 covers bus operators and cable car operators only, not train operators. Re-cache the correct statute page.
+      </li>
+      <li>
+        <strong>Arizona (Moderate):</strong> Add airport employees and railway workers (same 2025 ch. 172 bill). Note the dual-version structure: subsection (k) pre-2033, subsection (l) post-2032.
+      </li>
+      <li>
+        <strong>Illinois (Moderate):</strong> Move 625 ILCS 50/1 (Public Conveyance Notice Act) out of the statute number column and into Notes only.
+      </li>
+      <li>
+        <strong>Colorado (Moderate):</strong> Verify Class 1/Class 2 misdemeanor grades against the enrolled text of HB25-1290 (the signed PDF is in source_cache).
+      </li>
+      <li>
+        <strong>West Virginia (Minor):</strong> Add "aircraft" to the scope description — WV Code 61-2-16a(b) explicitly includes vehicle, aircraft, or boat.
+      </li>
+      <li>
+        <strong>Washington (Minor):</strong> Note 2025 amendment to RCW 9.91.025 (2025 c 234 s 1).
+      </li>
+      <li>
+        <strong>Minnesota (Minor):</strong> Add note on 609.855 subd. 5 (shooting at transit vehicles — up to 5 years/$10,000 if occupied).
+      </li>
+      <li>
+        <strong>Louisiana (Data integrity):</strong> Re-cache la_14_34_5_1.html — current file contains the wrong statute (RS 14:224).
+      </li>
+      <li>
+        <strong>Tennessee (Data integrity):</strong> Re-cache TCA 39-13-102 from a non-Cloudflare-blocked source (e.g., Justia, FindLaw, or LawServer).
+      </li>
+    </ol>
+  </div>
+
+</div><!-- .container -->
+
+<footer>
+  <p>Fact-check conducted May 16, 2026. Research support, not legal advice. All statute descriptions should be verified against current official legislative sources before use.</p>
+  <p style="margin-top:.3rem;"><a href="bus_driver_violence_statutes.tsv">Source TSV</a> &nbsp;&bull;&nbsp; <a href="index.html">Interactive Table</a> &nbsp;&bull;&nbsp; <a href="README.md">Method Notes</a></p>
+</footer>
+
+</body>
+</html>

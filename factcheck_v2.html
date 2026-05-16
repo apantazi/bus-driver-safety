@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fact-check v2 - Transit Driver Violence Statutes</title>
+  <style>
+:root { --bg:#f7f8fb; --ink:#20242c; --muted:#657184; --line:#d9e0ea; --surface:#fff; --green:#18794e; --green-bg:#eaf8f0; --amber:#9a6200; --amber-bg:#fff4dc; --red:#a13a34; --red-bg:#ffeceb; --blue:#2754c5; --blue-bg:#eef2ff; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); line-height:1.5; }
+header { padding:32px 24px 20px; background:#172033; color:white; }
+main { max-width:1400px; margin:0 auto; padding:22px 24px 44px; }
+h1 { margin:0 0 8px; font-size:clamp(2rem,4vw,4rem); line-height:1; letter-spacing:0; }
+h2 { margin:28px 0 12px; font-size:1.25rem; }
+h3 { margin:0 0 8px; font-size:1rem; }
+p { margin:0 0 12px; }
+a { color:#1a5bd7; }
+.meta { color:#c5cede; margin:0; max-width:900px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:18px 0; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px; box-shadow:0 10px 24px rgba(32,36,44,.05); }
+.num { display:block; font-size:2rem; font-weight:800; line-height:1; }
+.label { color:var(--muted); font-size:.78rem; font-weight:750; text-transform:uppercase; letter-spacing:.04em; }
+.callout { border-left:5px solid var(--blue); background:var(--blue-bg); padding:14px 16px; border-radius:8px; margin:16px 0; }
+.callout.warn { border-left-color:var(--amber); background:var(--amber-bg); }
+.callout.bad { border-left-color:var(--red); background:var(--red-bg); }
+.table-wrap { overflow:auto; border:1px solid var(--line); border-radius:8px; background:white; }
+table { width:100%; border-collapse:collapse; min-width:980px; }
+th,td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:.88rem; }
+th { position:sticky; top:0; background:#eef2f7; color:var(--muted); font-size:.74rem; text-transform:uppercase; letter-spacing:.04em; }
+tr:last-child td { border-bottom:0; }
+.badge { display:inline-flex; align-items:center; border-radius:999px; padding:4px 8px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+.confirmed { background:var(--green-bg); color:var(--green); }
+.updated { background:var(--amber-bg); color:var(--amber); }
+.rejected { background:var(--red-bg); color:var(--red); }
+.source-list { display:grid; gap:8px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.source-list a { display:block; background:white; border:1px solid var(--line); border-radius:8px; padding:10px 12px; text-decoration:none; overflow-wrap:anywhere; }
+.small { color:var(--muted); font-size:.85rem; }
+code { background:#eef2f7; padding:1px 5px; border-radius:4px; }
+footer { color:var(--muted); font-size:.85rem; padding:20px 24px 36px; max-width:1400px; margin:0 auto; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Fact-check v2</h1>
+    <p class="meta">State-by-state review of bus/public-transit-driver violence statute research. Review date: May 16, 2026. This report compares <code>factcheck_v1.html</code> with current source checks and writes a corrected versioned table at <code>bus_driver_violence_statutes_v2.tsv</code>.</p>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="card"><span class="num">51</span><span class="label">Jurisdictions reviewed</span></div>
+      <div class="card"><span class="num">15</span><span class="label">V2 row updates or notes</span></div>
+      <div class="card"><span class="num">1</span><span class="label">v1 critical finding rejected</span></div>
+      <div class="card"><span class="num">0</span><span class="label">new enacted 2026 transit-driver laws found</span></div>
+    </section>
+
+    <div class="callout bad">
+      <h3>Bottom line on factcheck_v1</h3>
+      <p>I agree with v1 on Louisiana, Illinois, Arizona's dual-version nuance, and several minor currency/scope notes. I do not agree with v1's critical Tennessee finding: current 2024 Tennessee Code says the transit-employee subsection in section 39-13-102(d) was deleted by a 2018 amendment. I also do not agree that Colorado's penalty grades were unverified; the signed HB25-1290 PDF confirms them.</p>
+    </div>
+
+    <div class="callout warn">
+      <h3>Important scope note</h3>
+      <p>This review looked for enacted current statutes. Pending or future-effective items were noted where found, but were not treated as current law on May 16, 2026. Examples include Arizona SB1448, Vermont H.255, Minnesota 2026 expansion bills, Michigan transit-operator bills, and Nevada's July 1, 2026 utility-worker additions.</p>
+    </div>
+
+    <h2>Versioned Files Created</h2>
+    <div class="grid">
+      <div class="card"><h3>bus_driver_violence_statutes_v2.tsv</h3><p>Corrected/currented version of the 51-row TSV with the same columns as v1.</p></div>
+      <div class="card"><h3>factcheck_v2.html</h3><p>This state-by-state report, including agreement/disagreement with <code>factcheck_v1.html</code>.</p></div>
+    </div>
+
+    <h2>Rows Updated in v2</h2>
+    <div class="card"><ol><li><strong>Arizona</strong>: Updated v2 citation, covered-worker language, sources, and notes.</li><li><strong>Colorado</strong>: Kept row substance; strengthened note.</li><li><strong>Illinois</strong>: Moved 625 ILCS 50/1 out of statute-number column and into source/note context.</li><li><strong>Louisiana</strong>: Corrected covered worker, trigger, notes, and sources.</li><li><strong>Maryland</strong>: Added lower-tier penalty note.</li><li><strong>Massachusetts</strong>: Strengthened note/source currency.</li><li><strong>Michigan</strong>: Updated note with proposed bill context.</li><li><strong>Minnesota</strong>: Added subd. 5 to statute/trigger/punishment notes.</li><li><strong>Nevada</strong>: Added future-effective note only.</li><li><strong>Tennessee</strong>: Kept no-current-transit-enhancement conclusion; replaced/strengthened sources and note.</li><li><strong>Vermont</strong>: No table change.</li><li><strong>Virginia</strong>: Added 2025 amendment note.</li><li><strong>Washington</strong>: Added amendment-history note.</li><li><strong>West Virginia</strong>: Added aircraft to covered worker/setting and trigger.</li><li><strong>Wisconsin</strong>: Strengthened note not to cite old section 940.20 as current authority.</li></ol></div>
+
+    <h2>High-value Sources Checked</h2>
+    <div class="source-list"><a href="https://law.justia.com/codes/tennessee/title-39/chapter-13/part-1/section-39-13-102/"><strong>Tennessee current code</strong><br><span class="small">Current 2024 text says subsection (d) deleted by 2018 amendment.</span></a><a href="https://legis.la.gov/Legis/Law.aspx?d=206144"><strong>Louisiana official code</strong><br><span class="small">Current text covers bus operators/cable car operators, not train operators.</span></a><a href="https://www.leg.colorado.gov/bill_files/40794/download"><strong>Colorado signed HB25-1290 PDF</strong><br><span class="small">Signed text confirms harassment/interference and misdemeanor grades.</span></a><a href="https://law.justia.com/codes/arizona/title-13/section-13-1204/"><strong>Arizona current 13-1204</strong><br><span class="small">Current version confirms public transit employees plus airport and railway additions.</span></a><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=9.91.025"><strong>Washington RCW 9.91.025</strong><br><span class="small">Citation history includes 2025 c 234 s 1; misdemeanor unchanged.</span></a><a href="https://malegislature.gov/Laws/SessionLaws/Acts/2025/Chapter79"><strong>Massachusetts Acts 2025 ch. 79</strong><br><span class="small">Adds public transit worker and contracted transit worker coverage.</span></a></div>
+
+    <h2>Status Counts</h2>
+    <section class="grid"><div class="card"><span class="num">36</span><span class="label">Confirmed / no material update found</span></div><div class="card"><span class="num">1</span><span class="label">Confirmed current 2025 update</span></div><div class="card"><span class="num">1</span><span class="label">Confirmed no enacted transit enhancement</span></div><div class="card"><span class="num">1</span><span class="label">Confirmed no enacted transit enhancement; pending bill noted</span></div><div class="card"><span class="num">1</span><span class="label">Confirmed; future-effective note</span></div><div class="card"><span class="num">1</span><span class="label">Confirmed; v1 concern resolved</span></div><div class="card"><span class="num">1</span><span class="label">Corrected</span></div><div class="card"><span class="num">1</span><span class="label">Minor citation note strengthened</span></div><div class="card"><span class="num">2</span><span class="label">Minor currency note added</span></div><div class="card"><span class="num">2</span><span class="label">Minor detail added</span></div><div class="card"><span class="num">1</span><span class="label">Minor scope detail added</span></div><div class="card"><span class="num">2</span><span class="label">Nuance updated</span></div><div class="card"><span class="num">1</span><span class="label">V1 rejected; original conclusion confirmed</span></div></section>
+
+    <h2>State-by-State Findings</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Jurisdiction</th>
+            <th>V2 status</th>
+            <th>Agreement with factcheck_v1</th>
+            <th>Finding</th>
+            <th>Action</th>
+            <th>Sources</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td><strong>Alabama</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://alisondb.legislature.state.al.us/alison/codeofalabama/1975/coatoc.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>Alaska</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.akleg.gov/basis/statutes.asp">source</a><br><a href="https://www.muni.org/Departments/transit/PeopleMover/Pages/OrdinanceAO202420S1.aspx">source</a></td>
+</tr>
+<tr>
+  <td><strong>Arizona</strong></td>
+  <td><span class="badge updated">Nuance updated</span></td>
+  <td>Partly agree with v1. The dual-version citation point is correct; airport/railway additions are real but outside the core bus/public-transit-driver scope.</td>
+  <td>Current 2025 Arizona text confirms public transit employee at (A)(8)(k) before 2033 and (A)(8)(l) after 2032; same chapter also added airport employees and railway workers. 2026 SB1448 is pending/engrossed, not current law in this review.</td>
+  <td>Updated v2 citation, covered-worker language, sources, and notes.</td>
+  <td><a href="https://law.justia.com/codes/arizona/title-13/section-13-1204/">source</a><br><a href="https://law.justia.com/codes/arizona/title-13/section-13-1204-version-2/">source</a><br><a href="https://www.azleg.gov/legtext/57leg/1r/laws/0172.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>Arkansas</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://codes.findlaw.com/ar/title-5-criminal-offenses/ar-code-sect-5-13-205.html">source</a><br><a href="https://codes.findlaw.com/ar/title-5-criminal-offenses/ar-code-sect-5-60-112/">source</a></td>
+</tr>
+<tr>
+  <td><strong>California</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=241.3">source</a><br><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=243.3">source</a><br><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=245.2">source</a></td>
+</tr>
+<tr>
+  <td><strong>Colorado</strong></td>
+  <td><span class="badge updated">Confirmed; v1 concern resolved</span></td>
+  <td>Disagree with v1 framing that grades were unverified. They are verifiable from the signed PDF.</td>
+  <td>Signed HB25-1290 text confirms 18-9-111(1)(i), Class 1 misdemeanor, and 32-9-160 Class 2 misdemeanor language.</td>
+  <td>Kept row substance; strengthened note.</td>
+  <td><a href="https://www.leg.colorado.gov/bills/hb25-1290">source</a><br><a href="https://www.leg.colorado.gov/bill_files/40794/download">source</a></td>
+</tr>
+<tr>
+  <td><strong>Connecticut</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.cga.ct.gov/current/pub/chap_952.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>Delaware</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://delcode.delaware.gov/title11/c005/sc02/">source</a></td>
+</tr>
+<tr>
+  <td><strong>District of Columbia</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://code.dccouncil.gov/us/dc/council/code/sections/22-3751.01">source</a><br><a href="https://code.dccouncil.gov/us/dc/council/code/sections/35-261">source</a></td>
+</tr>
+<tr>
+  <td><strong>Florida</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.leg.state.fl.us/STATUTES/index.cfm?App_mode=Display_Statute&amp;URL=0700-0799/0784/Sections/0784.07.html">source</a></td>
+</tr>
+<tr>
+  <td><strong>Georgia</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://law.justia.com/codes/georgia/title-16/chapter-5/article-2/section-16-5-20/">source</a><br><a href="https://law.justia.com/codes/georgia/title-16/chapter-5/article-2/section-16-5-21/">source</a><br><a href="https://law.justia.com/codes/georgia/title-16/chapter-5/article-2/section-16-5-23/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Hawaii</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.capitol.hawaii.gov/hrscurrent/Vol14_Ch0701-0853/HRS0711/HRS_0711-1112.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>Idaho</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://legislature.idaho.gov/statutesrules/idstat/title18/t18ch15/sect18-1522/">source</a><br><a href="https://legislature.idaho.gov/statutesrules/idstat/title18/t18ch09/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Illinois</strong></td>
+  <td><span class="badge updated">Nuance updated</span></td>
+  <td>Agree with v1.</td>
+  <td>625 ILCS 50/1 is the Public Conveyance Notice Act, not the criminal assault/battery statute. Criminal authority remains 720 ILCS 5/12-2 and 12-3.05.</td>
+  <td>Moved 625 ILCS 50/1 out of statute-number column and into source/note context.</td>
+  <td><a href="https://www.ilga.gov/legislation/ilcs/documents/072000050K12-2.htm">source</a><br><a href="https://www.ilga.gov/documents/legislation/ilcs/documents/072000050K12-3.05.htm">source</a><br><a href="https://www.ilga.gov/Legislation/ILCS/Articles?ActID=1827&amp;ChapterID=49&amp;Print=True">source</a></td>
+</tr>
+<tr>
+  <td><strong>Indiana</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://iga.in.gov/laws/current/ic/titles/035/#35-42-2-1">source</a></td>
+</tr>
+<tr>
+  <td><strong>Iowa</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.legis.iowa.gov/docs/code/708.1.pdf">source</a><br><a href="https://www.legis.iowa.gov/docs/code/708.2.pdf">source</a></td>
+</tr>
+<tr>
+  <td><strong>Kansas</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.ksrevisor.org/statutes/chapters/ch21/021_054_0012.html">source</a><br><a href="https://www.ksrevisor.org/statutes/chapters/ch21/021_054_0013.html">source</a></td>
+</tr>
+<tr>
+  <td><strong>Kentucky</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=19721">source</a></td>
+</tr>
+<tr>
+  <td><strong>Louisiana</strong></td>
+  <td><span class="badge updated">Corrected</span></td>
+  <td>Agree with v1.</td>
+  <td>Current official Louisiana and Justia text covers bus operators and electronically operated cable car operators; it does not cover train operators. Acts 2024, No. 367 increased penalties.</td>
+  <td>Corrected covered worker, trigger, notes, and sources.</td>
+  <td><a href="https://legis.la.gov/Legis/Law.aspx?d=206144">source</a><br><a href="https://law.justia.com/codes/louisiana/revised-statutes/title-14/rs-14-34-5-1/">source</a><br><a href="https://www.legis.la.gov/Legis/ViewDocument.aspx?d=1380490">source</a></td>
+</tr>
+<tr>
+  <td><strong>Maine</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://legislature.maine.gov/statutes/17-A/title17-Asec207.html">source</a><br><a href="https://legislature.maine.gov/statutes/17-A/title17-Asec208.html">source</a></td>
+</tr>
+<tr>
+  <td><strong>Maryland</strong></td>
+  <td><span class="badge updated">Minor detail added</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>7-705(f) interference penalty is correct; 7-705(e) has a separate lower fine tier for general transit-rule violations.</td>
+  <td>Added lower-tier penalty note.</td>
+  <td><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&amp;section=7-705">source</a><br><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&amp;section=7-705.1">source</a></td>
+</tr>
+<tr>
+  <td><strong>Massachusetts</strong></td>
+  <td><span class="badge updated">Confirmed current 2025 update</span></td>
+  <td>v1 listed no issue; row remains correct.</td>
+  <td>Chapter 79 of the Acts of 2025 amended ch. 265, section 13D to cover public transit workers and contracted/employed transit workers; approved Dec. 3, 2025 and current by review date.</td>
+  <td>Strengthened note/source currency.</td>
+  <td><a href="https://malegislature.gov/Laws/SessionLaws/Acts/2025/Chapter79">source</a><br><a href="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleI/Chapter265/Section13D">source</a></td>
+</tr>
+<tr>
+  <td><strong>Michigan</strong></td>
+  <td><span class="badge updated">Confirmed no enacted transit enhancement</span></td>
+  <td>Agree with v1 conclusion and cache caveat.</td>
+  <td>Public-utility-worker statutes do not cover transit; HB4917/HB4918 proposed transit-operator protections but available sources show proposed, not enacted, MCL 750.81g.</td>
+  <td>Updated note with proposed bill context.</td>
+  <td><a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-750-81">source</a><br><a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-750-81a">source</a><br><a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-750-82">source</a></td>
+</tr>
+<tr>
+  <td><strong>Minnesota</strong></td>
+  <td><span class="badge updated">Minor detail added</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>Core 609.2231 subd. 11 and 609.855 subd. 2 are correct; 609.855 subd. 5 also covers shooting at transit vehicles. 2026 expansion bills appear pending/not enacted.</td>
+  <td>Added subd. 5 to statute/trigger/punishment notes.</td>
+  <td><a href="https://www.revisor.mn.gov/statutes/cite/609.2231">source</a><br><a href="https://www.revisor.mn.gov/statutes/cite/609.855">source</a></td>
+</tr>
+<tr>
+  <td><strong>Mississippi</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://law.justia.com/codes/mississippi/title-97/chapter-3/in-general/section-97-3-7/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Missouri</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://revisor.mo.gov/main/OneSection.aspx?section=565.002">source</a><br><a href="https://revisor.mo.gov/main/OneSection.aspx?section=565.050">source</a><br><a href="https://revisor.mo.gov/main/OneSection.aspx?section=565.052">source</a></td>
+</tr>
+<tr>
+  <td><strong>Montana</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://leg.mt.gov/bills/mca/title_0450/chapter_0050/part_0020/sections_index.html">source</a></td>
+</tr>
+<tr>
+  <td><strong>Nebraska</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://nebraskalegislature.gov/laws/statutes.php?statute=28-308">source</a><br><a href="https://nebraskalegislature.gov/laws/statutes.php?statute=28-309">source</a><br><a href="https://nebraskalegislature.gov/laws/statutes.php?statute=28-310">source</a></td>
+</tr>
+<tr>
+  <td><strong>Nevada</strong></td>
+  <td><span class="badge updated">Confirmed; future-effective note</span></td>
+  <td>v1 listed no issue.</td>
+  <td>NRS transit-operator coverage remains. 2025 AB344/Chapter 328 adds utility-worker language in a July 1, 2026 version but does not remove transit-operator coverage.</td>
+  <td>Added future-effective note only.</td>
+  <td><a href="https://www.leg.state.nv.us/NRS/NRS-200.html#NRS200Sec471">source</a><br><a href="https://www.leg.state.nv.us/NRS/NRS-200.html#NRS200Sec481">source</a></td>
+</tr>
+<tr>
+  <td><strong>New Hampshire</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.gencourt.state.nh.us/rsa/html/LXII/631/631-mrg.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>New Jersey</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://law.justia.com/codes/new-jersey/title-2c/section-2c-12-1/">source</a></td>
+</tr>
+<tr>
+  <td><strong>New Mexico</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://law.justia.com/codes/new-mexico/chapter-30/article-7/section-30-7-12/">source</a></td>
+</tr>
+<tr>
+  <td><strong>New York</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.nysenate.gov/legislation/laws/PEN/120.05">source</a></td>
+</tr>
+<tr>
+  <td><strong>North Carolina</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_14/GS_14-33.html">source</a></td>
+</tr>
+<tr>
+  <td><strong>North Dakota</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://ndlegis.gov/cencode/t12-1c17.pdf">source</a></td>
+</tr>
+<tr>
+  <td><strong>Ohio</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://codes.ohio.gov/ohio-revised-code/section-2903.13">source</a></td>
+</tr>
+<tr>
+  <td><strong>Oklahoma</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=69447">source</a><br><a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=69448">source</a></td>
+</tr>
+<tr>
+  <td><strong>Oregon</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://oregon.public.law/statutes/ors_163.165">source</a></td>
+</tr>
+<tr>
+  <td><strong>Pennsylvania</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/18/00.027.002.000..HTM">source</a></td>
+</tr>
+<tr>
+  <td><strong>Rhode Island</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="http://webserver.rilegislature.gov/Statutes/TITLE11/11-5/11-5-5.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>South Carolina</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://www.scstatehouse.gov/code/t58c023.php">source</a><br><a href="https://www.scstatehouse.gov/code/t59c067.php">source</a><br><a href="https://www.scstatehouse.gov/code/t16c003.php">source</a></td>
+</tr>
+<tr>
+  <td><strong>South Dakota</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://sdlegislature.gov/Statutes/22-18-1">source</a><br><a href="https://sdlegislature.gov/Statutes/22-18-1.1">source</a></td>
+</tr>
+<tr>
+  <td><strong>Tennessee</strong></td>
+  <td><span class="badge rejected">V1 rejected; original conclusion confirmed</span></td>
+  <td>Disagree with v1 critical finding.</td>
+  <td>Current 2024 Tennessee Code says section 39-13-102(d) was deleted by a 2018 amendment, along with the related Class A misdemeanor provision. v1 relied on stale 2010/2014 text.</td>
+  <td>Kept no-current-transit-enhancement conclusion; replaced/strengthened sources and note.</td>
+  <td><a href="https://law.justia.com/codes/tennessee/title-39/chapter-13/part-1/section-39-13-101/">source</a><br><a href="https://law.justia.com/codes/tennessee/title-39/chapter-13/part-1/section-39-13-102/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Texas</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://statutes.capitol.texas.gov/Docs/PE/htm/PE.22.htm">source</a></td>
+</tr>
+<tr>
+  <td><strong>Utah</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://le.utah.gov/xcode/Title76/Chapter9/C76-9-S1502_2025050720250507.pdf">source</a><br><a href="https://le.utah.gov/xcode/Title76/Chapter9/C76-9-S1503_2025050720250507.pdf">source</a></td>
+</tr>
+<tr>
+  <td><strong>Vermont</strong></td>
+  <td><span class="badge updated">Confirmed no enacted transit enhancement; pending bill noted</span></td>
+  <td>v1 listed no issue.</td>
+  <td>Targeted search found Vermont H.255 introduced in 2025 for public transit workers, but no enacted current-law change was identified in this review.</td>
+  <td>No table change.</td>
+  <td><a href="https://legislature.vermont.gov/statutes/section/13/019/01023">source</a><br><a href="https://legislature.vermont.gov/statutes/section/13/019/01024">source</a></td>
+</tr>
+<tr>
+  <td><strong>Virginia</strong></td>
+  <td><span class="badge updated">Minor currency note added</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>Current page dated 5/16/2026 confirms subsection F and notes 2025 c. 361 as latest amendment; transit provision unchanged.</td>
+  <td>Added 2025 amendment note.</td>
+  <td><a href="https://law.lis.virginia.gov/vacode/title18.2/chapter4/section 18.2-57/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Washington</strong></td>
+  <td><span class="badge updated">Minor currency note added</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>RCW 9A.36.031 remains Class C felony for transit operator/driver assault. RCW 9.91.025 was amended by 2025 c 234 s 1; misdemeanor unchanged.</td>
+  <td>Added amendment-history note.</td>
+  <td><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=9A.36.031">source</a><br><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=9.91.025">source</a></td>
+</tr>
+<tr>
+  <td><strong>West Virginia</strong></td>
+  <td><span class="badge updated">Minor scope detail added</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>W. Va. Code section 61-2-16a includes aircraft in the unlawful-assault tier; penalties otherwise accurate.</td>
+  <td>Added aircraft to covered worker/setting and trigger.</td>
+  <td><a href="https://code.wvlegislature.gov/61-2-16A/">source</a></td>
+</tr>
+<tr>
+  <td><strong>Wisconsin</strong></td>
+  <td><span class="badge updated">Minor citation note strengthened</span></td>
+  <td>Agree with v1 minor point.</td>
+  <td>2025 Act 24 reorganized the law; section 940.62(1)(e) is current for public-transit vehicle operator/driver/passenger battery.</td>
+  <td>Strengthened note not to cite old section 940.20 as current authority.</td>
+  <td><a href="https://docs.legis.wisconsin.gov/document/statutes/940.62">source</a><br><a href="https://docs.legis.wisconsin.gov/document/statutes/940.51">source</a></td>
+</tr>
+<tr>
+  <td><strong>Wyoming</strong></td>
+  <td><span class="badge confirmed">Confirmed / no material update found</span></td>
+  <td>No specific v1 dispute; v2 review found no material correction beyond the existing row.</td>
+  <td>Live/current source review and targeted update search did not identify a newer enacted transit-driver-specific change requiring a row edit.</td>
+  <td>No v2 table change.</td>
+  <td><a href="https://wyoleg.gov/statutes/compress/title06.pdf">source</a></td>
+</tr></tbody>
+      </table>
+    </div>
+  </main>
+  <footer>
+    Research support, not legal advice. Charging, sentencing, effective dates, and local-law coverage can depend on facts and later amendments.
+  </footer>
+</body>
+</html>

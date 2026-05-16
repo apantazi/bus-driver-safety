@@ -6,6 +6,9 @@ Main files:
 
 - `index.html`: interactive browser app for searching, sorting, filtering, and inspecting each state.
 - `bus_driver_violence_statutes.tsv`: spreadsheet-friendly source table.
+- `bus_driver_violence_statutes_v2.tsv`: fact-checked versioned table produced after reviewing `factcheck_v1.html`.
+- `factcheck_v1.html`: first external fact-check page reviewed during the v2 pass.
+- `factcheck_v2.html`: state-by-state v2 fact-check report and agreement/disagreement summary for `factcheck_v1.html`.
 
 Raw downloaded source pages/PDFs used during research are in `source_cache/`.
 
