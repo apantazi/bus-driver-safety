@@ -2,9 +2,20 @@
 
 Research date: 2026-05-16.
 
-Main file: `bus_driver_violence_statutes.tsv`
+Main files:
+
+- `index.html`: interactive browser app for searching, sorting, filtering, and inspecting each state.
+- `bus_driver_violence_statutes.tsv`: spreadsheet-friendly source table.
 
 Raw downloaded source pages/PDFs used during research are in `source_cache/`.
+
+To run the app locally:
+
+```powershell
+python -m http.server 8000
+```
+
+Then open `http://127.0.0.1:8000/`.
 
 Scope:
 

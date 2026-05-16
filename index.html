@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transit Driver Violence Statutes</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-copy">
+        <p class="dateline">Research viewer</p>
+        <h1>Transit Driver Violence Statutes</h1>
+        <p>
+          A sortable, source-linked table for all 50 states plus D.C. covering
+          violence, assault, battery, interference, and related bus-driver protections.
+        </p>
+      </div>
+      <div class="header-actions" aria-label="App actions">
+        <a class="button secondary" href="bus_driver_violence_statutes.tsv">Download TSV</a>
+        <a class="button secondary" href="README.md">Method Notes</a>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="metrics" aria-label="Summary metrics">
+        <article class="metric">
+          <span class="metric-value" id="metric-total">--</span>
+          <span class="metric-label">Jurisdictions</span>
+        </article>
+        <article class="metric">
+          <span class="metric-value" id="metric-transit">--</span>
+          <span class="metric-label">Transit-specific or partial</span>
+        </article>
+        <article class="metric">
+          <span class="metric-value" id="metric-school">--</span>
+          <span class="metric-label">School-bus only</span>
+        </article>
+        <article class="metric">
+          <span class="metric-value" id="metric-general">--</span>
+          <span class="metric-label">General law only</span>
+        </article>
+      </section>
+
+      <section class="controls" aria-label="Table controls">
+        <label class="search-field" for="search">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="State, statute, felony, caveat, source...">
+        </label>
+        <label for="law-filter">
+          <span>Law type</span>
+          <select id="law-filter">
+            <option value="all">All law types</option>
+            <option value="Transit-specific">Transit-specific</option>
+            <option value="Transit interference">Transit interference</option>
+            <option value="Bus hijacking">Bus hijacking</option>
+            <option value="School bus only">School bus only</option>
+            <option value="Partial/local">Partial/local</option>
+            <option value="General only">General only</option>
+          </select>
+        </label>
+        <label for="grading-filter">
+          <span>Grading</span>
+          <select id="grading-filter">
+            <option value="all">All grades</option>
+            <option value="felony">Mentions felony</option>
+            <option value="misdemeanor">Mentions misdemeanor</option>
+            <option value="both">Mentions both</option>
+          </select>
+        </label>
+        <label for="distinct-filter">
+          <span>Distinct?</span>
+          <select id="distinct-filter">
+            <option value="all">All</option>
+            <option value="yes">Yes / partial</option>
+            <option value="no">No</option>
+          </select>
+        </label>
+        <button class="button ghost" id="reset-button" type="button">Reset</button>
+      </section>
+
+      <section class="state-strip" aria-label="Jurisdiction picker">
+        <div class="section-heading">
+          <h2>Jurisdictions</h2>
+          <p id="match-count">Loading...</p>
+        </div>
+        <div class="state-grid" id="state-grid"></div>
+      </section>
+
+      <section class="workspace">
+        <div class="table-panel">
+          <div class="section-heading table-heading">
+            <div>
+              <h2>Sortable Table</h2>
+              <p>Click any column heading to sort. Select a row to inspect sources and caveats.</p>
+            </div>
+            <button class="button secondary" id="copy-filtered-button" type="button">Copy Filtered Sources</button>
+          </div>
+          <div class="table-wrap">
+            <table id="statute-table">
+              <thead>
+                <tr>
+                  <th><button data-sort="Jurisdiction" type="button">State <span></span></button></th>
+                  <th><button data-sort="category" type="button">Type <span></span></button></th>
+                  <th><button data-sort="Statute number(s)" type="button">Statute <span></span></button></th>
+                  <th><button data-sort="Felony or misdemeanor" type="button">Grade <span></span></button></th>
+                  <th><button data-sort="Distinct from violence in general?" type="button">Distinct <span></span></button></th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="detail-panel" id="detail-panel" aria-live="polite">
+          <div class="empty-state">
+            <h2>Select a state</h2>
+            <p>State-level law summary, caveats, statute trigger, punishment, and source documents will appear here.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="source-link-template">
+      <a class="source-link" target="_blank" rel="noopener">
+        <span class="source-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" role="img" focusable="false">
+            <path d="M8.25 4.25h-2.5A2.75 2.75 0 0 0 3 7v7.25A2.75 2.75 0 0 0 5.75 17H13a2.75 2.75 0 0 0 2.75-2.75v-2.5" />
+            <path d="M11 3h6v6" />
+            <path d="m9.5 10.5 7-7" />
+          </svg>
+        </span>
+        <span class="source-text"></span>
+      </a>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
